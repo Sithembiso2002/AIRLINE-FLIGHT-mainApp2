@@ -1,7 +1,7 @@
 # ✈️ Complete Airline Reservation System
 
 **Course:** Object Oriented Programming II (BIOP2210)  
-**Student:** sethembiso sehlabane  
+**Student:** sethembiso sehlabane ,thato,irene 
 **Weight:** 40%  
 **Semester:** Year 3 Semester 1  
 
@@ -123,9 +123,9 @@ users (user_id, username, password, full_name, role, created_at)
 CREATE DATABASE airline_reservation;
 
 -- Update credentials in DatabaseConnection.java:
-private static final String URL = "jdbc:postgresql://localhost:5432/airline_reservation";
-private static final String USER = "your_username";
-private static final String PASSWORD = "your_password";
+private static final String URL = "jdbc:postgresql://dpg-d4gd9s9r0fns738c749g-a.oregon-postgres.render.com:5432/airline_reservation";
+private static final String USER = "new_user";
+private static final String PASSWORD = "gnjqdk8vU6Y61yTYgrisx0HOHnObPckA";
 ```
 
 ### Running the Application
@@ -136,7 +136,7 @@ cd AirlineReservationSystem
 mvnw.cmd clean javafx:run
 ```
 
-#### Mac/Linux:
+#### Mac/Linux/windows:
 ```bash
 cd AirlineReservationSystem
 chmod +x mvnw
@@ -265,7 +265,7 @@ src/
 ## 📊 System Requirements
 
 ### Minimum Requirements:
-- **OS:** Windows 10+ / macOS 10.14+ / Linux
+- **OS:** Windows 10+ / macOS 10.14+ / Linux/windows
 - **Java:** JDK 17 or higher
 - **RAM:** 4GB minimum, 8GB recommended
 - **Storage:** 500MB free space
@@ -284,7 +284,7 @@ git init
 git add .
 git commit -m "Complete Airline Reservation System - BIOP2210"
 git branch -M main
-git remote add origin https://github.com/username/AirlineReservationSystem.git
+git remote add origin (https://github.com/Sithembiso2002/AIRLINE-FLIGHT-mainApp2.git)
 git push -u origin main
 ```
 
@@ -322,6 +322,6 @@ This airline reservation system demonstrates:
 
 **Author:** Sethembiso 
 **Course:** BIOP2210 - Object Oriented Programming II  
-**Institution:** [Your Institution]  
-**Semester:** Year 2 Semester 2  
-**Date:** 2024
+**Institution:** [Limkokwing]  
+**Semester:** Year 3 Semester 1  
+**Date:** 2025
