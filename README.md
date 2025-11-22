@@ -1,6 +1,6 @@
 # ✈️ Complete Airline Reservation System
 
-**Course:** Object Oriented Programming II (BIOP2210)  
+**Course:** Object Oriented Programming II (DICOP2210)  
 **Student:** sethembiso sehlabane ,thato,irene 
 **Weight:** 40%  
 **Semester:** Year 3 Semester 1  
@@ -282,7 +282,7 @@ src/
 ```bash
 git init
 git add .
-git commit -m "Complete Airline Reservation System - BIOP2210"
+git commit -m "Complete Airline Reservation System - DIOP2210"
 git branch -M main
 git remote add origin (https://github.com/Sithembiso2002/AIRLINE-FLIGHT-mainApp2.git)
 git push -u origin main
