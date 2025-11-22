@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #F8F9FA;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.airlinereservationsystem.controllers.CustomerController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="14.0" spacing="15.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-padding: 10 0;">
+               <children>
+                  <Label text="Customer Portal" textFill="#343A40">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="fadeEffectBtn" mnemonicParsing="false" style="-fx-background-color: #17A2B8; -fx-background-radius: 25; -fx-padding: 8 15;" text="Special Offers" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <TabPane tabClosingPolicy="UNAVAILABLE" style="-fx-background-color: white; -fx-border-color: #DEE2E6; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8;">
+              <tabs>
+                <Tab text="My Profile">
+                  <content>
+                    <ScrollPane fitToWidth="true" style="-fx-background-color: #FFFFFF;">
+                      <content>
+                        <VBox spacing="20.0" style="-fx-padding: 20;">
+                           <children>
+                              <Label text="Complete your profile to start booking flights." textFill="#343A40">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <VBox spacing="15.0" style="-fx-background-color: #FFFFFF; -fx-padding: 25; -fx-border-color: #E3F2FD; -fx-border-width: 2; -fx-border-radius: 12; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                                 <children>
+                                    <VBox spacing="8.0">
+                                       <children>
+                                          <Label text="Full Name" textFill="#1976D2">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="customerNameField" promptText="e.g., Thabo Monne" style="-fx-background-color: #FAFAFA; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 12; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="8.0">
+                                       <children>
+                                          <Label text="Father's Name" textFill="#1976D2">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="fatherNameField" promptText="e.g., Motlatsi Monne" style="-fx-background-color: #FAFAFA; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 12; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="8.0">
+                                       <children>
+                                          <Label text="Gender" textFill="#1976D2">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="genderCombo" prefWidth="200.0" style="-fx-background-color: #FAFAFA; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 8; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="8.0">
+                                       <children>
+                                          <Label text="Date of Birth" textFill="#1976D2">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <DatePicker fx:id="dobPicker" prefWidth="200.0" style="-fx-background-color: #FAFAFA; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 8; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="8.0">
+                                       <children>
+                                          <Label text="Phone Number" textFill="#1976D2">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="phoneField" promptText="e.g., +266 5888 8888" style="-fx-background-color: #FAFAFA; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 12; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="8.0">
+                                       <children>
+                                          <Label text="Profession" textFill="#1976D2">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="professionField" promptText="e.g., Software Engineer" style="-fx-background-color: #FAFAFA; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 12; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="8.0">
+                                       <children>
+                                          <Label text="Address" textFill="#1976D2">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextArea fx:id="addressArea" prefHeight="80.0" promptText="Enter your full address in Lesotho" style="-fx-background-color: #FAFAFA; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 12; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);" wrapText="true" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="8.0">
+                                       <children>
+                                          <Label text="Security Info" textFill="#1976D2">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="securityInfoField" promptText="e.g., Mother's maiden name" style="-fx-background-color: #FAFAFA; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 12; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="8.0">
+                                       <children>
+                                          <Label text="Concession Category" textFill="#1976D2">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="concessionCombo" prefWidth="300.0" style="-fx-background-color: #FAFAFA; -fx-border-color: #FF9800; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 8; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(255,152,0,0.3), 5, 0, 0, 1);" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                              <HBox alignment="CENTER" spacing="20.0" style="-fx-padding: 20 0;">
+                                 <children>
+                                    <Button fx:id="registerBtn" onAction="#onRegisterCustomer" style="-fx-background-color: linear-gradient(to bottom, #4CAF50, #45a049); -fx-background-radius: 25; -fx-padding: 15 30; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.4), 8, 0, 0, 2); -fx-cursor: hand;" text="Register / Update Profile" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Button>
+                                    <Label fx:id="registrationStatusLabel" textFill="#4CAF50">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <VBox spacing="10.0" style="-fx-background-color: #FFF3E0; -fx-padding: 15; -fx-border-color: #FF9800; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8;">
+                                 <children>
+                                    <Label text="Concession Information" textFill="#E65100">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="concessionInfoLabel" text="Select a concession category above to see discount details and requirements." wrapText="true" textFill="#BF360C">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                      </content>
+                    </ScrollPane>
+                  </content>
+                </Tab>
+                <Tab text="Book a Flight">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-padding: 20;">
+                       <children>
+                          <VBox layoutX="14.0" layoutY="14.0" spacing="20.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                             <children>
+                                <VBox spacing="20.0" style="-fx-background-color: #E3F2FD; -fx-padding: 20; -fx-border-radius: 12; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);">
+                                   <children>
+                                      <Label text="Search Available Flights" textFill="#0D47A1">
+                                         <font>
+                                            <Font name="System Bold" size="18.0" />
+                                         </font>
+                                      </Label>
+                                      <HBox alignment="CENTER_LEFT" spacing="25.0">
+                                         <children>
+                                            <VBox spacing="8.0">
+                                               <children>
+                                                  <Label text="Travel Date" textFill="#1565C0">
+                                                     <font>
+                                                        <Font name="System Bold" size="14.0" />
+                                                     </font>
+                                                  </Label>
+                                                  <DatePicker fx:id="travelDatePicker" prefWidth="180.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 10; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);" />
+                                               </children>
+                                            </VBox>
+                                            <VBox spacing="8.0">
+                                               <children>
+                                                  <Label text="Route" textFill="#1565C0">
+                                                     <font>
+                                                        <Font name="System Bold" size="14.0" />
+                                                     </font>
+                                                  </Label>
+                                                  <ComboBox fx:id="routeCombo" prefWidth="220.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 8; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);" />
+                                               </children>
+                                            </VBox>
+                                            <VBox spacing="8.0">
+                                               <children>
+                                                  <Label text="Class" textFill="#1565C0">
+                                                     <font>
+                                                        <Font name="System Bold" size="14.0" />
+                                                     </font>
+                                                  </Label>
+                                                  <ComboBox fx:id="classCombo" prefWidth="150.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 8; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);" />
+                                               </children>
+                                            </VBox>
+                                            <VBox spacing="8.0">
+                                               <children>
+                                                  <Label text="Seat Preference" textFill="#1565C0">
+                                                     <font>
+                                                        <Font name="System Bold" size="14.0" />
+                                                     </font>
+                                                  </Label>
+                                                  <ComboBox fx:id="seatPreferenceCombo" prefWidth="150.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 8; -fx-padding: 8; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);" />
+                                               </children>
+                                            </VBox>
+                                            <VBox alignment="BOTTOM_CENTER" spacing="8.0">
+                                               <children>
+                                                  <Button fx:id="searchFlightsBtn" disable="true" onAction="#onSearchFlights" style="-fx-background-color: linear-gradient(to bottom, #2196F3, #1976D2); -fx-background-radius: 25; -fx-padding: 12 25; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.4), 8, 0, 0, 2); -fx-cursor: hand;" text="Search Flights" textFill="WHITE">
+                                                     <font>
+                                                        <Font name="System Bold" size="14.0" />
+                                                     </font>
+                                                  </Button>
+                                                  <ProgressIndicator fx:id="searchProgress" prefHeight="30.0" prefWidth="30.0" visible="false" />
+                                               </children>
+                                            </VBox>
+                                         </children>
+                                      </HBox>
+                                   </children>
+                                </VBox>
+                                <TableView fx:id="flightsTable" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #DEE2E6; -fx-border-radius: 5;">
+                                  <columns>
+                                    <TableColumn fx:id="flightNameCol" prefWidth="150.0" text="Flight" />
+                                    <TableColumn fx:id="routeCol" prefWidth="200.0" text="Route" />
+                                      <TableColumn fx:id="departureCol" prefWidth="100.0" text="Departure" />
+                                      <TableColumn fx:id="arrivalCol" prefWidth="100.0" text="Arrival" />
+                                      <TableColumn fx:id="availableSeatsCol" prefWidth="120.0" text="Available Seats" />
+                                      <TableColumn fx:id="fareCol" prefWidth="120.0" text="Base Fare (LSL)" />
+                                  </columns>
+                                   <columnResizePolicy>
+                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                   </columnResizePolicy>
+                                </TableView>
+                                <HBox alignment="CENTER_LEFT" spacing="30.0">
+                                   <children>
+                                      <VBox spacing="5.0">
+                                         <children>
+                                            <Label text="Base Fare" textFill="#343A40">
+                                               <font>
+                                                  <Font size="14.0" />
+                                               </font>
+                                            </Label>
+                                            <Label fx:id="baseFareLabel" text="LSL0.00" textFill="#343A40">
+                                               <font>
+                                                  <Font name="System Bold" size="18.0" />
+                                               </font>
+                                            </Label>
+                                         </children>
+                                      </VBox>
+                                      <VBox spacing="5.0">
+                                         <children>
+                                            <Label text="Discount" textFill="#FFC107">
+                                               <font>
+                                                  <Font size="14.0" />
+                                               </font>
+                                            </Label>
+                                            <Label fx:id="discountLabel" text="LSL0.00" textFill="#FFC107">
+                                               <font>
+                                                  <Font name="System Bold" size="18.0" />
+                                               </font>
+                                            </Label>
+                                         </children>
+                                      </VBox>
+                                      <VBox spacing="5.0">
+                                         <children>
+                                            <Label text="Final Fare" textFill="#28A745">
+                                               <font>
+                                                  <Font size="14.0" />
+                                               </font>
+                                            </Label>
+                                            <Label fx:id="finalFareLabel" text="LSL0.00" textFill="#28A745">
+                                               <font>
+                                                  <Font name="System Bold" size="18.0" />
+                                               </font>
+                                            </Label>
+                                         </children>
+                                      </VBox>
+                                      <Button fx:id="makeReservationBtn" disable="true" onAction="#onMakeReservation" style="-fx-background-color: #28A745; -fx-background-radius: 5; -fx-padding: 10 20;" text="Make Reservation" textFill="WHITE">
+                                         <font>
+                                            <Font name="System Bold" size="16.0" />
+                                         </font>
+                                      </Button>
+                                      <ProgressBar fx:id="reservationProgress" prefWidth="200.0" progress="0.0" visible="false" />
+                                   </children>
+                                   <padding>
+                                      <Insets top="10.0" />
+                                   </padding>
+                                </HBox>
+                             </children>
+                          </VBox>
+                       </children>
+                    </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="My Bookings">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-padding: 20;">
+                       <children>
+                          <VBox layoutX="14.0" layoutY="14.0" spacing="15.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                             <children>
+                                <Button onAction="#onLoadMyBookings" style="-fx-background-color: #007BFF; -fx-background-radius: 5; -fx-padding: 8 15;" text="Load My Bookings" textFill="WHITE" />
+                                <TableView fx:id="myBookingsTable" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #DEE2E6; -fx-border-radius: 5;">
+                                  <columns>
+                                    <TableColumn fx:id="myPnrCol" prefWidth="120.0" text="PNR" />
+                                    <TableColumn fx:id="myFlightCol" prefWidth="150.0" text="Flight" />
+                                      <TableColumn fx:id="myTravelDateCol" prefWidth="120.0" text="Travel Date" />
+                                      <TableColumn fx:id="mySeatCol" prefWidth="150.0" text="Seat" />
+                                      <TableColumn fx:id="myStatusCol" prefWidth="100.0" text="Status" />
+                                      <TableColumn fx:id="myFareCol" prefWidth="120.0" text="Fare Paid (LSL)" />
+                                  </columns>
+                                   <columnResizePolicy>
+                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                   </columnResizePolicy>
+                                </TableView>
+                             </children>
+                          </VBox>
+                       </children>
+                    </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Cancel Booking">
+                   <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-padding: 20;">
+                         <children>
+                            <VBox layoutX="14.0" layoutY="14.0" spacing="15.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                               <children>
+                                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                     <children>
+                                        <Label text="Enter PNR to Cancel:" textFill="#343A40" />
+                                        <TextField fx:id="cancelPnrField" promptText="e.g., PNR123456" style="-fx-background-color: #F8F9FA; -fx-border-color: #CED4DA; -fx-border-radius: 5; -fx-padding: 5;" />
+                                        <Button fx:id="cancelBookingBtn" onAction="#onSearchBookingForCancel" style="-fx-background-color: #007BFF; -fx-background-radius: 5; -fx-padding: 8 15;" text="Search Booking" textFill="WHITE" />
+                                     </children>
+                                  </HBox>
+                                  <VBox fx:id="bookingDetailsBox" managed="false" spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #CED4DA; -fx-border-radius: 8; -fx-background-radius: 8;" visible="false">
+                                     <children>
+                                        <Label text="Booking Details" textFill="#343A40">
+                                           <font>
+                                              <Font name="System Bold" size="18.0" />
+                                           </font>
+                                        </Label>
+                                        <Label fx:id="bookingInfoLabel" wrapText="true" textFill="#343A40" />
+                                        <Label text="Refund Calculation" textFill="#343A40">
+                                           <font>
+                                              <Font name="System Bold" size="18.0" />
+                                           </font>
+                                           <padding>
+                                              <Insets top="10.0" />
+                                           </padding>
+                                        </Label>
+                                        <Label fx:id="refundInfoLabel" wrapText="true" textFill="#343A40" />
+                                        <Button fx:id="confirmCancelBtn" onAction="#onConfirmCancellation" style="-fx-background-color: #DC3545; -fx-background-radius: 5; -fx-padding: 10 20;" text="Confirm Cancellation" textFill="WHITE">
+                                           <font>
+                                              <Font name="System Bold" size="14.0" />
+                                           </font>
+                                        </Button>
+                                     </children>
+                                  </VBox>
+                               </children>
+                            </VBox>
+                         </children>
+                      </AnchorPane>
+                   </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <Label fx:id="statusLabel" text="Status: Ready" textFill="#6C757D">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

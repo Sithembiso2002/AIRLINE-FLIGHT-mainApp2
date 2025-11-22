@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:controller="com.example.airlinereservationsystem.controllers.DashboardController"
+           xmlns:fx="http://javafx.com/fxml" style="-fx-background-color: #f5f5f5;">
+
+    <!-- Menu Bar (10 marks) -->
+    <top>
+        <MenuBar fx:id="menuBar" style="-fx-background-color: #39995e; -fx-border-color: #2c3e50; -fx-border-width: 0 0 2 0;">
+            <Menu text="File" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 20px;">
+                <MenuItem text="New Reservation" onAction="#onNewReservation"/>
+                <MenuItem text="View Flights" onAction="#onViewFlights"/>
+                <SeparatorMenuItem/>
+                <MenuItem text="Exit" onAction="#onExit"/>
+            </Menu>
+            <Menu text="Manage" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 20px;">
+                <MenuItem text="Reservations" onAction="#onManageReservations"/>
+                <MenuItem text="Cancellations" onAction="#onManageCancellations"/>
+                <SeparatorMenuItem/>
+                <MenuItem text="Admin Panel" onAction="#onAdminPanel"/>
+            </Menu>
+            <Menu text="Help" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 20px;">
+                <MenuItem text="About" onAction="#onAbout"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="20" style="-fx-background-color: #f5f5f5;">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <!-- Header Section -->
+                <VBox spacing="10" alignment="CENTER">
+                    <Label text="✈️ Airline Reservation System"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;">
+                        <font>
+                            <Font size="28.0"/>
+                        </font>
+                    </Label>
+                    <Label text="BIOP2210 - Object Oriented Programming II"
+                           style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+                </VBox>
+
+                <!-- Progress Indicators Section (10 marks) -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                    <Label text="📊 System Status" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <GridPane hgap="30" vgap="15">
+                        <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <Label text="Database Connection:" style="-fx-font-weight: bold;"/>
+                            <ProgressBar fx:id="dbProgressBar" prefWidth="250" prefHeight="20"
+                                       style="-fx-accent: #27ae60;"/>
+                            <Label fx:id="dbStatusLabel" text="Connecting..." style="-fx-text-fill: #7f8c8d;"/>
+                        </VBox>
+                        <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Label text="Flight Data Loading:" style="-fx-font-weight: bold;"/>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <ProgressIndicator fx:id="flightProgressIndicator" prefWidth="40" prefHeight="40"/>
+                                <Label fx:id="flightStatusLabel" text="Loading flights..." style="-fx-text-fill: #7f8c8d;"/>
+                            </HBox>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+
+                <!-- Action Buttons with Visual Effects (10 marks) -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                    <Label text="🎯 Quick Actions" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <HBox spacing="20" alignment="CENTER">
+                        <Button fx:id="reserveButton" text="✈️ Make Reservation"
+                                onAction="#onNewReservation" prefWidth="180" prefHeight="50"
+                                style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8;">
+                            <effect>
+                                <DropShadow color="rgba(39, 174, 96, 0.4)" radius="10" offsetY="3"/>
+                            </effect>
+                        </Button>
+                        <Button fx:id="fadeButton" text="🔍 View Flights"
+                                onAction="#onViewFlights" prefWidth="180" prefHeight="50"
+                                style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8;"/>
+                        <Button fx:id="cancelButton" text="❌ Cancel Booking"
+                                onAction="#onManageCancellations" prefWidth="180" prefHeight="50"
+                                style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8;">
+                            <effect>
+                                <DropShadow color="rgba(231, 76, 60, 0.4)" radius="10" offsetY="3"/>
+                            </effect>
+                        </Button>
+                    </HBox>
+                </VBox>
+
+                <!-- ScrollPane with Pagination (10 marks) -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                    <Label text="📋 Recent Bookings (25+ Records)" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+                    <ScrollPane fx:id="bookingsScrollPane" prefHeight="350" fitToWidth="true"
+                              style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-radius: 5;">
+                        <VBox fx:id="bookingsContainer" spacing="8" style="-fx-background-color: #f8f9fa;">
+                            <padding>
+                                <Insets top="15" right="15" bottom="15" left="15"/>
+                            </padding>
+                        </VBox>
+                    </ScrollPane>
+
+                    <!-- Pagination Controls -->
+                    <HBox spacing="15" alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+                        <Button fx:id="firstPageBtn" text="⏮️ First" onAction="#onFirstPage"
+                               style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Button fx:id="prevPageBtn" text="⬅️ Previous" onAction="#onPreviousPage"
+                               style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Label fx:id="pageLabel" text="Page 1 of 1"
+                              style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 5 15;"/>
+                        <Button fx:id="nextPageBtn" text="Next ➡️" onAction="#onNextPage"
+                               style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Button fx:id="lastPageBtn" text="Last ⏭️" onAction="#onLastPage"
+                               style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                    </HBox>
+
+                    <Label fx:id="recordCountLabel" text="Showing 5 of 25+ records"
+                          style="-fx-text-fill: #7f8c8d; -fx-font-size: 12px;" alignment="CENTER"/>
+                </VBox>
+
+                <!-- Database Integration Demo (15 marks) -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                    <Label text="🗄️ Database Operations" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <HBox spacing="15" alignment="CENTER">
+                        <Button text="📊 Load Sample Data" onAction="#onLoadSampleData"
+                               style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Button text="🔄 Refresh Data" onAction="#onRefreshData"
+                               style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Button text="🧪 Test Connection" onAction="#onTestConnection"
+                               style="-fx-background-color: #ffc107; -fx-text-fill: black; -fx-background-radius: 5;"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- Status Bar -->
+    <bottom>
+        <HBox spacing="15" alignment="CENTER_LEFT"
+              style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-text-fill: white;">
+            <Label fx:id="statusLabel" text="🟢 System Ready" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="userInfoLabel" text="" style="-fx-text-fill: #f39c12; -fx-font-weight: bold;"/>
+            <Separator orientation="VERTICAL"/>
+            <Label fx:id="connectionLabel" text="Database: Connected" style="-fx-text-fill: #1abc9c;"/>
+            <Separator orientation="VERTICAL"/>
+            <Label fx:id="timeLabel" text="" style="-fx-text-fill: #bdc3c7;"/>
+            <Button text="🚀 Logout" onAction="#onLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 5;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

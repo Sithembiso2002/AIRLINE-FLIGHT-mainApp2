@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:controller="com.example.airlinereservationsystem.controllers.LoginController"
+           xmlns:fx="http://javafx.com/fxml" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9);">
+    
+    <center>
+        <VBox spacing="20" alignment="CENTER" maxWidth="400" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 5);">
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40"/>
+            </padding>
+            
+            <VBox spacing="10" alignment="CENTER">
+                <Label text="✈️ Airline System" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Label text="BIOP2210 - Sethembiso" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+            </VBox>
+            
+            <VBox fx:id="loginForm" spacing="15" alignment="CENTER">
+                <Label text="🔐 Login" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                
+                <TextField fx:id="usernameField" promptText="👤 Username" prefWidth="300" prefHeight="40"
+                          style="-fx-font-size: 14px; -fx-background-radius: 8;"/>
+                          
+                <PasswordField fx:id="passwordField" promptText="🔒 Password" prefWidth="300" prefHeight="40"
+                              style="-fx-font-size: 14px; -fx-background-radius: 8;"/>
+                              
+                <HBox spacing="10" alignment="CENTER">
+                    <Button text="🚀 Login" onAction="#onLogin" prefWidth="140" prefHeight="40"
+                           style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8;"/>
+                    <Button text="📝 Register" onAction="#showRegister" prefWidth="140" prefHeight="40"
+                           style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8;"/>
+                </HBox>
+            </VBox>
+            
+            <VBox fx:id="registerForm" spacing="15" alignment="CENTER" visible="false" managed="false">
+                <Label text="📝 Register New User" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                
+                <TextField fx:id="regUsernameField" promptText="👤 Username" prefWidth="300" prefHeight="40"
+                          style="-fx-font-size: 14px; -fx-background-radius: 8;"/>
+                          
+                <PasswordField fx:id="regPasswordField" promptText="🔒 Password" prefWidth="300" prefHeight="40"
+                              style="-fx-font-size: 14px; -fx-background-radius: 8;"/>
+                              
+                <TextField fx:id="regFullNameField" promptText="👨‍💼 Full Name" prefWidth="300" prefHeight="40"
+                          style="-fx-font-size: 14px; -fx-background-radius: 8;"/>
+                          
+                <ComboBox fx:id="regRoleCombo" promptText="🎭 Select Role" prefWidth="300" prefHeight="40"
+                         style="-fx-font-size: 14px; -fx-background-radius: 8;"/>
+                         
+                <HBox spacing="10" alignment="CENTER">
+                    <Button text="✅ Create Account" onAction="#onRegister" prefWidth="140" prefHeight="40"
+                           style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8;"/>
+                    <Button text="🔙 Back to Login" onAction="#showLogin" prefWidth="140" prefHeight="40"
+                           style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8;"/>
+                </HBox>
+            </VBox>
+            
+            <Label fx:id="statusLabel" text="" style="-fx-text-fill: #e74c3c; -fx-font-weight: bold;"/>
+            
+            <VBox spacing="5" alignment="CENTER" style="-fx-background-color: #ecf0f1; -fx-padding: 15; -fx-background-radius: 8;">
+                <Label text="🔑 Default Accounts:" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Label text="Admin: admin/admin123" style="-fx-font-size: 12px; -fx-text-fill: #34495e;"/>
+                <Label text="Staff: staff/staff123" style="-fx-font-size: 12px; -fx-text-fill: #34495e;"/>
+                <Label text="Customer: customer/customer123" style="-fx-font-size: 12px; -fx-text-fill: #34495e;"/>
+            </VBox>
+        </VBox>
+    </center>
+    
+</BorderPane>

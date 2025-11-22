@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.example.airlinereservationsystem.controllers.AdminController"
+           style="-fx-background-color: #f5f5f5;">
+    
+    <top>
+        <VBox style="-fx-background-color: #2c3e50; -fx-padding: 15;">
+            <Label text="👑 Admin Control Panel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Complete system management and verification" style="-fx-font-size: 14px; -fx-text-fill: #bdc3c7;"/>
+        </VBox>
+    </top>
+    
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            
+            <!-- System Overview Tab -->
+            <Tab text="📊 System Overview">
+                <VBox spacing="20" style="-fx-padding: 20;">
+                    
+                    <!-- System Statistics -->
+                    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                        <Label text="📈 System Statistics" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        
+                        <GridPane hgap="30" vgap="15">
+                            <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0" alignment="CENTER">
+                                <Label text="Total Users" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+                                <Label fx:id="totalUsersLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+                            </VBox>
+                            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0" alignment="CENTER">
+                                <Label text="Total Flights" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+                                <Label fx:id="totalFlightsLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                            </VBox>
+                            <VBox spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="0" alignment="CENTER">
+                                <Label text="Total Reservations" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+                                <Label fx:id="totalReservationsLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #f39c12;"/>
+                            </VBox>
+                            <VBox spacing="5" GridPane.columnIndex="3" GridPane.rowIndex="0" alignment="CENTER">
+                                <Label text="Total Cancellations" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+                                <Label fx:id="totalCancellationsLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;"/>
+                            </VBox>
+                        </GridPane>
+                    </VBox>
+                    
+                    <!-- Quick Actions -->
+                    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                        <Label text="⚡ Quick Actions" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        
+                        <HBox spacing="15">
+                            <Button text="🔄 Refresh Data" onAction="#onRefreshData" 
+                                   style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;">
+                                <effect><DropShadow color="rgba(52, 152, 219, 0.4)" radius="5" offsetY="2"/></effect>
+                            </Button>
+                            <Button text="🧪 Test Connection" onAction="#onTestConnection" 
+                                   style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;">
+                                <effect><DropShadow color="rgba(39, 174, 96, 0.4)" radius="5" offsetY="2"/></effect>
+                            </Button>
+                            <Button text="📊 Generate Report" 
+                                   style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;">
+                                <effect><DropShadow color="rgba(243, 156, 18, 0.4)" radius="5" offsetY="2"/></effect>
+                            </Button>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- System Status -->
+                    <Label fx:id="systemStatusLabel" text="🟢 System Ready" 
+                          style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                    
+                </VBox>
+            </Tab>
+            
+            <!-- User Management Tab -->
+            <Tab text="👥 User Management">
+                <VBox spacing="20" style="-fx-padding: 20;">
+                    
+                    <!-- Users Table -->
+                    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                        <Label text="👥 System Users" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        
+                        <TableView fx:id="usersTable" prefHeight="300">
+                            <columns>
+                                <TableColumn fx:id="usernameColumn" text="Username" prefWidth="150"/>
+                                <TableColumn fx:id="fullNameColumn" text="Full Name" prefWidth="200"/>
+                                <TableColumn fx:id="roleColumn" text="Role" prefWidth="100"/>
+                                <TableColumn fx:id="createdColumn" text="Created" prefWidth="150"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                    
+                    <!-- User Form -->
+                    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                        <Label text="➕ Add/Edit User" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        
+                        <GridPane hgap="15" vgap="10">
+                            <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                <Label text="Username *"/>
+                                <TextField fx:id="usernameField" promptText="Enter username"/>
+                            </VBox>
+                            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                <Label text="Password *"/>
+                                <PasswordField fx:id="passwordField" promptText="Enter password"/>
+                            </VBox>
+                            <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                <Label text="Full Name *"/>
+                                <TextField fx:id="fullNameField" promptText="Enter full name"/>
+                            </VBox>
+                            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <Label text="Role *"/>
+                                <ComboBox fx:id="roleCombo" prefWidth="200"/>
+                            </VBox>
+                        </GridPane>
+                        
+                        <HBox spacing="10">
+                            <Button text="➕ Add User" onAction="#onAddUser" 
+                                   style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;"/>
+                            <Button text="✏️ Update User" onAction="#onUpdateUser" 
+                                   style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;"/>
+                            <Button text="🗑️ Delete User" onAction="#onDeleteUser" 
+                                   style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;"/>
+                        </HBox>
+                    </VBox>
+                    
+                </VBox>
+            </Tab>
+            
+            <!-- Reservation Management Tab -->
+            <Tab text="🎫 Reservations">
+                <VBox spacing="20" style="-fx-padding: 20;">
+                    
+                    <!-- Reservations Table -->
+                    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="🎫 All Reservations" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button text="🔄 Refresh" onAction="#onRefreshData" 
+                                   style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        </HBox>
+                        
+                        <TableView fx:id="reservationsTable" prefHeight="400">
+                            <columns>
+                                <TableColumn fx:id="pnrColumn" text="PNR" prefWidth="120"/>
+                                <TableColumn fx:id="passengerColumn" text="Passenger" prefWidth="200"/>
+                                <TableColumn fx:id="flightColumn" text="Flight" prefWidth="150"/>
+                                <TableColumn fx:id="seatColumn" text="Seat Info" prefWidth="150"/>
+                                <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                            </columns>
+                        </TableView>
+                        
+                        <HBox spacing="10">
+                            <Button text="🔄 Reassign Seat" onAction="#onReassignSeat" 
+                                   style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;"/>
+                            <Button text="📋 View Details" 
+                                   style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;"/>
+                            <Button text="✉️ Send Notification" 
+                                   style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;"/>
+                        </HBox>
+                    </VBox>
+                    
+                </VBox>
+            </Tab>
+            
+            <!-- Database Operations Tab -->
+            <Tab text="🗄️ Database">
+                <VBox spacing="20" style="-fx-padding: 20;">
+                    
+                    <!-- SQL Query Interface -->
+                    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                        <Label text="🗄️ SQL Query Interface" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        
+                        <VBox spacing="10">
+                            <Label text="SQL Query:"/>
+                            <TextArea fx:id="sqlQueryArea" prefRowCount="5" promptText="Enter your SQL query here..."/>
+                            
+                            <HBox spacing="10">
+                                <Button fx:id="executeQueryBtn" text="▶️ Execute Query" onAction="#onExecuteQuery" 
+                                       style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;">
+                                    <effect><DropShadow color="rgba(39, 174, 96, 0.4)" radius="5" offsetY="2"/></effect>
+                                </Button>
+                                <Button text="🧹 Clear" onAction="#onClearQuery" 
+                                       style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;"/>
+                            </HBox>
+                        </VBox>
+                        
+                        <VBox spacing="10">
+                            <Label text="Query Results:"/>
+                            <TextArea fx:id="queryResultArea" prefRowCount="10" editable="false" 
+                                     style="-fx-font-family: 'Courier New'; -fx-font-size: 12px;"/>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Quick Queries -->
+                    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                        <Label text="⚡ Quick Queries" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        
+                        <HBox spacing="10">
+                            <Button text="👥 All Users" onAction="#onQueryAllUsers" 
+                                   style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                            <Button text="✈️ All Flights" onAction="#onQueryAllFlights" 
+                                   style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                            <Button text="🎫 All Reservations" onAction="#onQueryAllReservations" 
+                                   style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                            <Button text="❌ All Cancellations" onAction="#onQueryAllCancellations" 
+                                   style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        </HBox>
+                    </VBox>
+                    
+                </VBox>
+            </Tab>
+            
+        </TabPane>
+    </center>
+    
+</BorderPane>

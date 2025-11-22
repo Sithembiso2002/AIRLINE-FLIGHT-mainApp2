@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.example.airlinereservationsystem.controllers.ReservationController"
+           style="-fx-background-color: #f5f5f5;">
+    
+    <top>
+        <Label text="✈️ Flight Reservation" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;">
+            <padding><Insets top="20" bottom="20"/></padding>
+        </Label>
+    </top>
+    
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="20" style="-fx-padding: 20;">
+                
+                <!-- Customer Details Section -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                    <Label text="👤 Customer Details" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                    
+                    <GridPane hgap="15" vgap="10">
+                        <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <Label text="Full Name *"/>
+                            <TextField fx:id="customerNameField" promptText="Enter full name"/>
+                        </VBox>
+                        <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Label text="Father's Name"/>
+                            <TextField fx:id="fatherNameField" promptText="Enter father's name"/>
+                        </VBox>
+                        <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <Label text="Gender *"/>
+                            <ComboBox fx:id="genderCombo" prefWidth="200"/>
+                        </VBox>
+                        <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <Label text="Date of Birth *"/>
+                            <DatePicker fx:id="dobPicker"/>
+                        </VBox>
+                        <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2">
+                            <Label text="Address"/>
+                            <TextArea fx:id="addressArea" prefRowCount="2" promptText="Enter complete address"/>
+                        </VBox>
+                        <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                            <Label text="Phone Number *"/>
+                            <TextField fx:id="phoneField" promptText="Enter phone number"/>
+                        </VBox>
+                        <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <Label text="Profession"/>
+                            <TextField fx:id="professionField" promptText="Enter profession"/>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+                
+                <!-- Travel Details Section -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                    <Label text="🛫 Travel Details" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                    
+                    <GridPane hgap="15" vgap="10">
+                        <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <Label text="Travel Date *"/>
+                            <DatePicker fx:id="travelDatePicker"/>
+                        </VBox>
+                        <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Label text="Class Preference *"/>
+                            <ComboBox fx:id="classCombo" prefWidth="200"/>
+                        </VBox>
+                        <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <Label text="Seat Preference"/>
+                            <ComboBox fx:id="seatPreferenceCombo" prefWidth="200"/>
+                        </VBox>
+                        <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <Label text="Concession Category"/>
+                            <ComboBox fx:id="concessionCombo" prefWidth="200"/>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+                
+                <!-- Available Flights Section -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="✈️ Available Flights" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        <Button fx:id="searchFlightsBtn" text="🔍 Search Flights" onAction="#onSearchFlights" 
+                               style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <ProgressIndicator fx:id="searchProgress" visible="false" prefWidth="20" prefHeight="20"/>
+                    </HBox>
+                    
+                    <TableView fx:id="flightsTable" prefHeight="200">
+                        <columns>
+                            <TableColumn fx:id="flightNameCol" text="Flight" prefWidth="100"/>
+                            <TableColumn fx:id="routeCol" text="Route" prefWidth="150"/>
+                            <TableColumn fx:id="departureCol" text="Departure" prefWidth="100"/>
+                            <TableColumn fx:id="arrivalCol" text="Arrival" prefWidth="100"/>
+                            <TableColumn fx:id="availableSeatsCol" text="Available" prefWidth="80"/>
+                            <TableColumn fx:id="fareCol" text="Fare" prefWidth="80"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+                
+                <!-- Fare Calculation Section -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                    <Label text="💰 Fare Calculation" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                    
+                    <GridPane hgap="20" vgap="10">
+                        <Label text="Base Fare:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                        <Label fx:id="baseFareLabel" text="M0.00 LSL" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        
+                        <Label text="Discount:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                        <Label fx:id="discountLabel" text="M0.00 LSL" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        
+                        <Separator GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"/>
+                        
+                        <Label text="Final Fare:" style="-fx-font-weight: bold; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                        <Label fx:id="finalFareLabel" text="M0.00 LSL" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #27ae60;" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    </GridPane>
+                </VBox>
+                
+                <!-- Action Buttons -->
+                <HBox spacing="15" alignment="CENTER">
+                    <Button fx:id="reserveBtn" text="🎫 Make Reservation" onAction="#onMakeReservation" 
+                           prefWidth="180" prefHeight="50"
+                           style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 8;">
+                        <effect><DropShadow color="rgba(39, 174, 96, 0.4)" radius="10" offsetY="3"/></effect>
+                    </Button>
+                    <Button text="🔄 Reset Form" onAction="#onResetForm" 
+                           prefWidth="150" prefHeight="50"
+                           style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 8;"/>
+                    <ProgressBar fx:id="reservationProgress" visible="false" prefWidth="200"/>
+                </HBox>
+                
+                <!-- Status Label -->
+                <Label fx:id="statusLabel" text="Ready to make reservation" 
+                      style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" alignment="CENTER"/>
+                
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+</BorderPane>

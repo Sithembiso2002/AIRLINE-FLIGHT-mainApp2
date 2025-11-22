@@ -1,0 +1,4 @@
+*.class
+target/build/.idea/.vscode/*.log
+.DS_Store
+Thumbs.db

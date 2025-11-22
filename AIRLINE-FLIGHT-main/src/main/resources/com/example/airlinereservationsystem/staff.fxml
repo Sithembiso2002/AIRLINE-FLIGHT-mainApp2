@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.example.airlinereservationsystem.controllers.StaffController"
+           style="-fx-background-color: #f5f5f5;">
+    
+    <!-- Menu Bar -->
+    <top>
+        <VBox>
+            <MenuBar style="-fx-background-color: #2c3e50;">
+                <Menu text="File" style="-fx-text-fill: white;">
+                    <MenuItem text="New Customer Reservation"/>
+                    <MenuItem text="Search Reservations"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Generate Report"/>
+                    <MenuItem text="Export Data"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Logout"/>
+                </Menu>
+                <Menu text="View" style="-fx-text-fill: white;">
+                    <MenuItem text="All Reservations"/>
+                    <MenuItem text="Flight Schedules"/>
+                    <MenuItem text="Waiting Lists"/>
+                    <MenuItem text="Cancellations"/>
+                </Menu>
+                <Menu text="Bookings" style="-fx-text-fill: white;">
+                    <MenuItem text="Make Reservation"/>
+                    <MenuItem text="Cancel Booking"/>
+                    <MenuItem text="Modify Booking"/>
+                    <MenuItem text="Check-in Passenger"/>
+                </Menu>
+                <Menu text="Reports" style="-fx-text-fill: white;">
+                    <MenuItem text="Daily Summary"/>
+                    <MenuItem text="Revenue Report"/>
+                    <MenuItem text="Seat Utilization"/>
+                </Menu>
+            </MenuBar>
+            
+            <!-- Header -->
+            <HBox style="-fx-background-color: #34495e; -fx-padding: 15;" alignment="CENTER_LEFT">
+                <Label text="👨💼 Staff Dashboard - Customer Assistance Portal" 
+                       style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="statusLabel" text="Ready to assist customers" 
+                       style="-fx-font-size: 14px; -fx-text-fill: #f39c12;"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            
+            <!-- Customer Assistance Tab -->
+            <Tab text="👤 Customer Assistance">
+                <ScrollPane fitToWidth="true">
+                    <VBox spacing="20" style="-fx-padding: 20;">
+                        
+                        <!-- Customer Details Section -->
+                        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                            <Label text="👤 Customer Information" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                            
+                            <GridPane hgap="15" vgap="10">
+                                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                    <Label text="Full Name *"/>
+                                    <TextField fx:id="customerNameField" promptText="Enter customer name"/>
+                                </VBox>
+                                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                    <Label text="Father's Name"/>
+                                    <TextField fx:id="fatherNameField" promptText="Enter father's name"/>
+                                </VBox>
+                                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                    <Label text="Gender *"/>
+                                    <ComboBox fx:id="genderCombo" prefWidth="200"/>
+                                </VBox>
+                                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label text="Date of Birth *"/>
+                                    <DatePicker fx:id="dobPicker"/>
+                                </VBox>
+                                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2">
+                                    <Label text="Address"/>
+                                    <TextArea fx:id="addressArea" prefRowCount="2" promptText="Enter complete address"/>
+                                </VBox>
+                                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                                    <Label text="Phone Number *"/>
+                                    <TextField fx:id="phoneField" promptText="Enter phone number"/>
+                                </VBox>
+                                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <Label text="Profession"/>
+                                    <TextField fx:id="professionField" promptText="Enter profession"/>
+                                </VBox>
+                            </GridPane>
+                        </VBox>
+                        
+                        <!-- Travel Preferences Section -->
+                        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                            <Label text="✈️ Travel Preferences" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                            
+                            <GridPane hgap="15" vgap="10">
+                                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                    <Label text="Travel Date *"/>
+                                    <DatePicker fx:id="travelDatePicker"/>
+                                </VBox>
+                                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                    <Label text="Class Preference *"/>
+                                    <ComboBox fx:id="classCombo" prefWidth="200"/>
+                                </VBox>
+                                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                    <Label text="Seat Preference"/>
+                                    <ComboBox fx:id="seatPreferenceCombo" prefWidth="200"/>
+                                </VBox>
+                                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label text="Concession Category"/>
+                                    <ComboBox fx:id="concessionCombo" prefWidth="200"/>
+                                </VBox>
+                            </GridPane>
+                            
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Button fx:id="searchFlightsBtn" text="🔍 Search Available Flights" onAction="#onSearchFlights" 
+                                       style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;">
+                                    <effect><DropShadow color="rgba(52, 152, 219, 0.4)" radius="8" offsetY="3"/></effect>
+                                </Button>
+                                <ProgressIndicator fx:id="searchProgress" visible="false" prefWidth="25" prefHeight="25"/>
+                                <Button fx:id="fadeEffectBtn" text="✨ Animated Button" 
+                                       style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;"/>
+                            </HBox>
+                        </VBox>
+                        
+                        <!-- Available Flights Section -->
+                        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                            <Label text="✈️ Available Flights" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                            
+                            <TableView fx:id="flightsTable" prefHeight="200">
+                                <columns>
+                                    <TableColumn fx:id="flightNameCol" text="Flight" prefWidth="100"/>
+                                    <TableColumn fx:id="routeCol" text="Route" prefWidth="150"/>
+                                    <TableColumn fx:id="departureCol" text="Departure" prefWidth="100"/>
+                                    <TableColumn fx:id="arrivalCol" text="Arrival" prefWidth="100"/>
+                                    <TableColumn fx:id="availableSeatsCol" text="Available" prefWidth="80"/>
+                                    <TableColumn fx:id="fareCol" text="Base Fare" prefWidth="100"/>
+                                </columns>
+                            </TableView>
+                        </VBox>
+                        
+                        <!-- Fare Calculation Section -->
+                        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                            <Label text="💰 Fare Calculation" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                            
+                            <GridPane hgap="20" vgap="10">
+                                <Label text="Base Fare:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <Label fx:id="baseFareLabel" text="M0.00 LSL" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                
+                                <Label text="Discount:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <Label fx:id="discountLabel" text="M0.00 LSL" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                
+                                <Separator GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"/>
+                                
+                                <Label text="Final Fare:" style="-fx-font-weight: bold; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                <Label fx:id="finalFareLabel" text="M0.00 LSL" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #27ae60;" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                            </GridPane>
+                            
+                            <HBox spacing="15" alignment="CENTER">
+                                <Button fx:id="makeReservationBtn" text="🎫 Confirm Customer Reservation" onAction="#onMakeReservation" 
+                                       prefWidth="250" prefHeight="50"
+                                       style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 8;">
+                                    <effect><DropShadow color="rgba(39, 174, 96, 0.4)" radius="10" offsetY="3"/></effect>
+                                </Button>
+                                <ProgressBar fx:id="reservationProgress" visible="false" prefWidth="200"/>
+                            </HBox>
+                        </VBox>
+                        
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+            
+            <!-- Reservations Management Tab -->
+            <Tab text="📋 Manage Reservations">
+                <VBox spacing="20" style="-fx-padding: 20;">
+                    
+                    <!-- Search Section -->
+                    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                        <Label text="🔍 Search Reservations" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="PNR Number:"/>
+                            <TextField fx:id="pnrSearchField" promptText="Enter PNR to search" prefWidth="200"/>
+                            <Button fx:id="searchPnrBtn" text="🔍 Search" onAction="#onSearchPNR" 
+                                   style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Reservations Table with ScrollPane -->
+                    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                        <Label text="📋 All Reservations" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        
+                        <ScrollPane fitToWidth="true" prefHeight="300">
+                            <TableView fx:id="reservationsTable">
+                                <columns>
+                                    <TableColumn fx:id="pnrCol" text="PNR" prefWidth="120"/>
+                                    <TableColumn fx:id="passengerCol" text="Passenger" prefWidth="200"/>
+                                    <TableColumn fx:id="flightCol" text="Flight" prefWidth="150"/>
+                                    <TableColumn fx:id="seatCol" text="Seat Info" prefWidth="150"/>
+                                    <TableColumn fx:id="statusCol" text="Status" prefWidth="100"/>
+                                    <TableColumn fx:id="fareAmountCol" text="Fare" prefWidth="100"/>
+                                </columns>
+                            </TableView>
+                        </ScrollPane>
+                        
+                        <!-- Pagination Controls -->
+                        <HBox spacing="15" alignment="CENTER">
+                            <Button fx:id="firstPageBtn" text="⏮️ First" onAction="#onFirstPage" 
+                                   style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                            <Button fx:id="prevPageBtn" text="⬅️ Previous" onAction="#onPreviousPage"
+                                   style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                            <Label fx:id="pageLabel" text="Page 1 of 1" 
+                                  style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 5 15;"/>
+                            <Button fx:id="nextPageBtn" text="Next ➡️" onAction="#onNextPage"
+                                   style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                            <Button fx:id="lastPageBtn" text="Last ⏭️" onAction="#onLastPage"
+                                   style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        </HBox>
+                        
+                        <Label fx:id="recordCountLabel" text="Showing records" 
+                              style="-fx-text-fill: #7f8c8d; -fx-font-size: 12px;" alignment="CENTER"/>
+                    </VBox>
+                    
+                    <!-- Reservation Details Section -->
+                    <VBox fx:id="reservationDetailsBox" spacing="15" visible="false" 
+                          style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                        <Label text="📄 Reservation Details" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        
+                        <Label fx:id="reservationInfoLabel" text="" 
+                              style="-fx-font-family: 'Courier New'; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                        
+                        <HBox spacing="10">
+                            <Button fx:id="cancelReservationBtn" text="❌ Cancel Reservation" onAction="#onCancelReservation" 
+                                   style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;">
+                                <effect><DropShadow color="rgba(231, 76, 60, 0.4)" radius="5" offsetY="2"/></effect>
+                            </Button>
+                            <Button text="✏️ Modify Booking" 
+                                   style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;"/>
+                            <Button text="✅ Check-in Passenger" 
+                                   style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;"/>
+                        </HBox>
+                    </VBox>
+                    
+                </VBox>
+            </Tab>
+            
+            <!-- Reports Tab -->
+            <Tab text="📊 Reports & Summary">
+                <VBox spacing="20" style="-fx-padding: 20;">
+                    
+                    <!-- Report Generation -->
+                    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                        <Label text="📊 Generate Reports" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        
+                        <HBox spacing="15">
+                            <Button text="📈 Generate Summary Report" onAction="#onGenerateReport" 
+                                   style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;">
+                                <effect><DropShadow color="rgba(23, 162, 184, 0.4)" radius="5" offsetY="2"/></effect>
+                            </Button>
+                            <Button text="💰 Revenue Report" 
+                                   style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;"/>
+                            <Button text="🪑 Seat Utilization" 
+                                   style="-fx-background-color: #ffc107; -fx-text-fill: black; -fx-background-radius: 5; -fx-padding: 10 20;"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Report Display -->
+                    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                        <Label text="📄 Report Output" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        
+                        <ScrollPane fitToWidth="true" prefHeight="400">
+                            <TextArea fx:id="reportsArea" editable="false" 
+                                     style="-fx-font-family: 'Courier New'; -fx-font-size: 12px;"
+                                     promptText="Generated reports will appear here..."/>
+                        </ScrollPane>
+                    </VBox>
+                    
+                </VBox>
+            </Tab>
+            
+        </TabPane>
+    </center>
+    
+</BorderPane>

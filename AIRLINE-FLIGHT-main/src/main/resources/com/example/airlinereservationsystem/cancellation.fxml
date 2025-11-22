@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.example.airlinereservationsystem.controllers.CancellationController"
+           style="-fx-background-color: #f5f5f5;">
+    
+    <top>
+        <Label text="❌ Flight Cancellation" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;">
+            <padding><Insets top="20" bottom="20"/></padding>
+        </Label>
+    </top>
+    
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="20" style="-fx-padding: 20;">
+            
+            <!-- Search Section -->
+            <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                <Label text="🔍 Search Booking" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <VBox spacing="5">
+                        <Label text="PNR / Reservation ID"/>
+                        <TextField fx:id="pnrField" promptText="Enter PNR or Reservation ID" prefWidth="250"/>
+                    </VBox>
+                    <Button fx:id="searchBtn" text="🔍 Search" onAction="#onSearchBooking" 
+                           style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;"/>
+                    <ProgressIndicator fx:id="searchProgress" visible="false" prefWidth="20" prefHeight="20"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Booking Details Section -->
+            <VBox fx:id="bookingDetailsSection" spacing="15" visible="false" managed="false"
+                  style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                <Label text="📋 Booking Details" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                
+                <GridPane hgap="20" vgap="15">
+                    <Label text="PNR:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="pnrLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    
+                    <Label text="Passenger Name:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="passengerNameLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    
+                    <Label text="Flight:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Label fx:id="flightLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    
+                    <Label text="Travel Date:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <Label fx:id="travelDateLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    
+                    <Label text="Class:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <Label fx:id="classLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    
+                    <Label text="Seat Number:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <Label fx:id="seatLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                    
+                    <Label text="Fare Paid:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <Label fx:id="farePaidLabel" text="-" style="-fx-text-fill: #27ae60;" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                    
+                    <Label text="Status:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                    <Label fx:id="statusLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                </GridPane>
+            </VBox>
+            
+            <!-- Refund Calculation Section -->
+            <VBox fx:id="refundSection" spacing="15" visible="false" managed="false"
+                  style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                <Label text="💰 Refund Calculation" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                
+                <GridPane hgap="20" vgap="10">
+                    <Label text="Original Fare:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="originalFareLabel" text="M0.00 LSL" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    
+                    <Label text="Cancellation Fee:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="cancellationFeeLabel" text="M0.00 LSL" style="-fx-text-fill: #e74c3c;" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    
+                    <Separator GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"/>
+                    
+                    <Label text="Refund Amount:" style="-fx-font-weight: bold; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <Label fx:id="refundAmountLabel" text="M0.00 LSL" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #27ae60;" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                </GridPane>
+                
+                <VBox spacing="10">
+                    <Label text="📝 Cancellation Policy:" style="-fx-font-weight: bold;"/>
+                    <Label text="• Cancellation more than 24 hours before departure: 10% fee" style="-fx-font-size: 12px;"/>
+                    <Label text="• Cancellation within 24 hours: 25% fee" style="-fx-font-size: 12px;"/>
+                    <Label text="• No-show: No refund" style="-fx-font-size: 12px;"/>
+                </VBox>
+            </VBox>
+            
+            <!-- Action Buttons -->
+            <HBox fx:id="actionButtonsSection" spacing="15" alignment="CENTER" visible="false" managed="false">
+                <Button fx:id="cancelBookingBtn" text="❌ Cancel Booking" onAction="#onCancelBooking" 
+                       prefWidth="180" prefHeight="50"
+                       style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 8;">
+                    <effect><DropShadow color="rgba(231, 76, 60, 0.4)" radius="10" offsetY="3"/></effect>
+                </Button>
+                <Button text="🔄 Search Another" onAction="#onSearchAnother" 
+                       prefWidth="150" prefHeight="50"
+                       style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 8;"/>
+                <ProgressBar fx:id="cancellationProgress" visible="false" prefWidth="200"/>
+            </HBox>
+            
+            <!-- All Bookings Section -->
+            <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="📋 All Bookings" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                    <Button text="🔄 Refresh" onAction="#onRefreshBookings" 
+                           style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                </HBox>
+                
+                <TableView fx:id="bookingsTable" prefHeight="300">
+                    <columns>
+                        <TableColumn fx:id="pnrCol" text="PNR" prefWidth="100"/>
+                        <TableColumn fx:id="nameCol" text="Passenger" prefWidth="150"/>
+                        <TableColumn fx:id="flightCol" text="Flight" prefWidth="100"/>
+                        <TableColumn fx:id="dateCol" text="Date" prefWidth="100"/>
+                        <TableColumn fx:id="classCol" text="Class" prefWidth="80"/>
+                        <TableColumn fx:id="seatCol" text="Seat" prefWidth="60"/>
+                        <TableColumn fx:id="fareCol" text="Fare" prefWidth="80"/>
+                        <TableColumn fx:id="bookingStatusCol" text="Status" prefWidth="100"/>
+                    </columns>
+                </TableView>
+                
+                <!-- Pagination -->
+                <HBox spacing="10" alignment="CENTER">
+                    <Button fx:id="firstPageBtn" text="First" onAction="#onFirstPage"/>
+                    <Button fx:id="prevPageBtn" text="Previous" onAction="#onPreviousPage"/>
+                    <Label fx:id="pageLabel" text="Page 1 of 1"/>
+                    <Button fx:id="nextPageBtn" text="Next" onAction="#onNextPage"/>
+                    <Button fx:id="lastPageBtn" text="Last" onAction="#onLastPage"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Status Label -->
+            <Label fx:id="messageLabel" text="Enter PNR to search for booking" 
+                  style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" alignment="CENTER"/>
+            
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+</BorderPane>
